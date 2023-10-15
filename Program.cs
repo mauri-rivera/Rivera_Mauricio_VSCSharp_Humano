@@ -37,9 +37,9 @@ class Humano
 
     public int Ataque(Humano atacado)
     {
-        int danioAgresor = 3 * Agresor.Fuerza;
-        int danioRecibido = atacado.Salud - danioAgresor;
+        int dañoAgresor = 3 * Agresor.Fuerza;
+        int dañoRecibido = atacado.Salud - dañoAgresor;
 
-        return danioRecibido;
+        return dañoRecibido;
     }
 }
