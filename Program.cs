@@ -1,11 +1,12 @@
 ﻿
-Humano agresor = new Humano("Atacante", 5, 5, 5, 150, 75);
 Humano defensor = new Humano("Atacado");
+Humano luchador = new Humano("Atacante", 5, 5, 5, 150);
+Humano agresor = new Humano(luchador);
 
 Console.WriteLine("");
 Console.WriteLine($"La salud del defensor antes de ser atacado: {defensor.Salud}");
 Console.WriteLine("");
-defensor.Salud = agresor.Ataque(defensor, agresor);
+defensor.Salud = agresor.Ataque(defensor);
 Console.WriteLine($"La salud del defensor después de ser atacado: {defensor.Salud}");
 Console.WriteLine("");
 Console.WriteLine("----------------------------------------------------");
@@ -18,7 +19,8 @@ class Humano
     public int Destreza { get; set; }
     public int Salud { get; set; }
     public int Resistencia { get; set; }
-
+    Humano Agresor;
+    
     public Humano(string n, int f = 3, int i = 3, int d = 3, int s = 100)
     {
         Nombre = n;
@@ -28,23 +30,16 @@ class Humano
         Salud = s;
     }
 
-    public Humano(string n, int f, int i, int d, int s, int r = 50)
+    public Humano(Humano atacante)
     {
-        Nombre = n;
-        Fuerza = f;
-        Inteligencia = i;
-        Destreza = d;
-        Salud = s;
-        Resistencia = r;
+        Agresor = atacante;
     }
 
-    public int Ataque(Humano atacado, Humano atacante)
+    public int Ataque(Humano atacado)
     {
-        int danioAgresor = 3 * atacante.Fuerza;
+        int danioAgresor = 3 * Agresor.Fuerza;
         int danioRecibido = atacado.Salud - danioAgresor;
 
         return danioRecibido;
     }
 }
-
-
