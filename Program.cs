@@ -18,7 +18,6 @@ class Humano
     public int Inteligencia { get; set; }
     public int Destreza { get; set; }
     public int Salud { get; set; }
-    public int Resistencia { get; set; }
     Humano Agresor;
     
     public Humano(string n, int f = 3, int i = 3, int d = 3, int s = 100)
